@@ -1,7 +1,34 @@
 function myFunction() {
+		var errorDiv = document.getElementById("inputErrorDiv");
+		while (errorDiv.firstChild) {
+			errorDiv.removeChild(errorDiv.firstChild);
+		}
 		var Principal = document.getElementById("principalInput").value;
+		var principalMin = 50000;
+		var principalMax = 5000000;
+		if (Principal <  principalMin || Principal > principalMax) {
+			var principalValdtnErr = document.createTextNode("Invalid Input: Principal must be between " + principalMin + "  and " + principalMax);
+			errorDiv.appendChild(principalValdtnErr);
+			return;
+		}
+		
 		var rate = (document.getElementById("interestInput").value / 100)/12;
+		var rateMin = 0;
+		var rateMax = 100;
+		if (rate*100*12 <  rateMin || rate*100*12 > rateMax) {
+			var rateValdtnErr = document.createTextNode("Invalid Input: Interest rate must be between " + rateMin + "%  and " + rateMax + "%");
+			errorDiv.appendChild(rateValdtnErr);
+			return;
+		}
+		
 		var numMonths = 12*(document.getElementById("termInput").value);
+		var yearsMin = 5;
+		var yearsMax = 50;
+		if (numMonths/12 < yearsMin || numMonths/12 > yearsMax) {
+			var yearsValdtnErr = document.createTextNode("Invalid Input: Loan term must be between " + yearsMin + "  and " + yearsMax + " years");
+			errorDiv.appendChild(yearsValdtnErr);
+			return;
+		}
 		
 		var monthlyPayment = Principal * (rate * Math.pow((1 + rate),numMonths))/(Math.pow((1 + rate),numMonths)-1);
 		
