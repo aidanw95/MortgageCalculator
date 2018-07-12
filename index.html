@@ -9,10 +9,12 @@
            <h1>Mortgage Calculator</h1> 
            <ul id="myList"></ul>
             <div id ="inputErrorDiv"></div>
-            Principal: <input id = "principalInput" type="text" name="principal"><br>
-            Interest: <input id = "interestInput" type="text" name="interest"><br>
-            Number of Years: <input id = "termInput" type="text" name="numYears"><br>
+            Principal: <input id = "principalInput" type="number" name="principal"><br>
+            Interest: <input id = "interestInput" type="number" name="interest"><br>
+            Number of Years: <input id = "termInput" type="number" name="numYears"><br>
             <input type="submit" value="Submit" onClick="myFunction()">
+
+            <p id="1"></p>
         </div>
         <div id="rightColumn">
             <canvas id="line-chart" width="500" height="500"></canvas>

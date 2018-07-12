@@ -34,24 +34,18 @@ function myFunction() {
 		
 		//Monthly payment
 		//alert(monthlyPayment);
-		var node = document.createElement("LI");
-		var textnode = document.createTextNode("Your monthly payment is " + (Math.round(monthlyPayment*100)/100));
-		node.appendChild(textnode);
-		document.getElementById("myList").appendChild(node);
+		var node = document.getElementById("1");
+		var output = "Your monthly payment is " + (Math.round(monthlyPayment*100)/100) + "<br>";
 		
-		//Total Intrest
+	
+		
+		//Total Interest
 		//alert((monthlyPayment * numMonths) - Principal); 
-		var node = document.createElement("LI");
-		var textnode = document.createTextNode("Your total intrest payment is " + (((monthlyPayment * numMonths) - Principal)));
-		node.appendChild(textnode);
-		document.getElementById("myList").appendChild(node);
+		output += "Your total interest payment is " + (((monthlyPayment * numMonths) - Principal)) + "<br>";
 		
 		
-		var node = document.createElement("LI");
-		var textnode = document.createTextNode("Your total payment for your home is " + ((monthlyPayment * numMonths)));
-		node.appendChild(textnode);
-		document.getElementById("myList").appendChild(node);
-		
+		output += "Your total payment for your home is " + ((monthlyPayment * numMonths));
+		node.innerHTML = output;
 		
 		var pBalanceRem = Principal;
 		var intrestPerMonth = [numMonths];
@@ -74,8 +68,6 @@ function myFunction() {
 			nums[i] = i;
 			i++;
 		}
-
-		
 		new Chart(document.getElementById("line-chart"), {
 	  type: 'line',
 	  data: {
@@ -96,7 +88,7 @@ function myFunction() {
 	  options: {
 		title: {
 		  display: true,
-		  text: 'Intrest Payment vs. Principal Payment'
+		  text: 'Interest Payment vs. Principal Payment'
 		},
 		responsive: false
 	  }
