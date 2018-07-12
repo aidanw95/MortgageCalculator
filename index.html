@@ -1,17 +1,22 @@
-<h1>Mortgage Calculator</h1>
-<br>
-Created by Ankit,Alex, Meeka, Michael and Aidan.
-<br><br>
-<div id ="inputErrorDiv"></div>
-Principal: <input id = "principalInput" type="text" name="principal"><br>
-Interest: <input id = "interestInput" type="text" name="interest"><br>
-Number of Years: <input id = "termInput" type="text" name="numYears"><br>
-<input type="submit" value="Submit" onClick="myFunction()">
-
-<canvas id="line-chart" width="500" height="500"></canvas>
-<script src= "node_modules/chart.js/dist/Chart.js"></script>
-
-<ul id="myList">
-</ul>
-
-<script src="index.js"></script>
+<head>
+    <link rel="stylesheet" href="./index.css">
+    <script src= "node_modules/chart.js/dist/Chart.js"></script>
+    <script src="index.js"></script>
+</head>
+<body>
+   <div id="main">
+        <div id="leftColumn">
+           <h1>Mortgage Calculator</h1> 
+           <ul id="myList"></ul>
+            <div id ="inputErrorDiv"></div>
+            Principal: <input id = "principalInput" type="text" name="principal"><br>
+            Interest: <input id = "interestInput" type="text" name="interest"><br>
+            Number of Years: <input id = "termInput" type="text" name="numYears"><br>
+            <input type="submit" value="Submit" onClick="myFunction()">
+        </div>
+        <div id="rightColumn">
+            <canvas id="line-chart" width="500" height="500"></canvas>
+        </div>
+    </div>
+<!--    <p>Created by Ankit,  Aidan, Alex, Meeka, and Michael.</p> -->
+</body>
