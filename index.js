@@ -1,3 +1,5 @@
+var thing;
+
 var state={
 	"Alabama": .43,
 	"Alaska":1.19,
@@ -99,7 +101,7 @@ function myFunction() {
 		
 		
 		output += "<b>Total payment: " + ((monthlyPayment * numMonths)).toFixed(2)+"</b><br><br>";
-		output += "<b>Property Taxes per month: " + (Principal* state[document.getElementById("hi").value])/(12*100)+"</b>";
+		output += "<b>Property Taxes per month: " + ((Principal* state[document.getElementById("hi").value])/(12*100)).toFixed(2)+"</b>";
 		node.innerHTML = output;
 		
 		var pBalanceRem = Principal;
@@ -124,11 +126,15 @@ function myFunction() {
 			i++;
 		}
 		
-	
-	new Chart(document.getElementById("line-chart"),{});
+
 	document.getElementById("line-chart").height = 500;
 	document.getElementById("line-chart").width = 800;
-		new Chart(document.getElementById("line-chart"), {
+	
+	
+	if(thing != null){
+		thing.destroy();
+	}
+	thing = new Chart(document.getElementById("line-chart"), {
 	  type: 'line',
 	  data: {
 		labels: nums,
