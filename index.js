@@ -77,23 +77,57 @@ function myFunction() {
 		}
 		else{
 			Principal = document.getElementById("propVal").value * (1 - document.getElementById("downPay").value/100);
+			document.getElementById("principalInput").value = Principal;
 		}
 		var principalMin = 50000;
 		var principalMax = 5000000;
-		if (Principal <  principalMin || Principal > principalMax) {
-			var principalValdtnErr = document.createTextNode("Invalid Input: Principal must be between " + principalMin + "  and " + principalMax);
-			errorDiv.appendChild(principalValdtnErr);
-			return;
-		}
 		
+		if(document.getElementById("advancedStuff").style.display == "block"){
+			
+			var propVal = document.getElementById("propVal").value;
+			if (propVal <  principalMin || propVal > principalMax) {
+				var principalValdtnErr = document.createTextNode("Invalid Input: Property Value must be between " + principalMin + "  and " + principalMax);
+				errorDiv.appendChild(principalValdtnErr);
+				return;
+			}
+			
+			var downPay = document.getElementById("downPay").value;
+			var rateMin = 0;
+			var rateMax = 100;
+			if (downPay == "" || downPay <  rateMin || pmiVal> rateMax) {
+				var rateValdtnErr = document.createTextNode("Invalid Input: Down Payment must be between " + rateMin + "%  and " + rateMax + "%");
+				errorDiv.appendChild(rateValdtnErr);
+				return;
+			}
+			
+			
+			var pmiVal = document.getElementById("pmiVal").value;
+			if (pmiVal == "" || pmiVal<  rateMin || pmiVal> rateMax) {
+				var rateValdtnErr = document.createTextNode("Invalid Input: PMI rate must be between " + rateMin + "%  and " + 3 + "%");
+				errorDiv.appendChild(rateValdtnErr);
+				return;
+			}
+			
+			
+		}
+		else{
+			if (Principal <  principalMin || Principal > principalMax) {
+				var principalValdtnErr = document.createTextNode("Invalid Input: Principal must be between " + principalMin + "  and " + principalMax);
+				errorDiv.appendChild(principalValdtnErr);
+				return;
+			}
+		}
 		var rate = (document.getElementById("interestInput").value / 100)/12;
 		var rateMin = 0;
 		var rateMax = 100;
-		if (rate*100*12 <  rateMin || rate*100*12 > rateMax) {
+		if (rate == "" || rate*100*12 <  rateMin || rate*100*12 > rateMax) {
 			var rateValdtnErr = document.createTextNode("Invalid Input: Interest rate must be between " + rateMin + "%  and " + rateMax + "%");
 			errorDiv.appendChild(rateValdtnErr);
 			return;
 		}
+		
+		
+		
 		
 		var numMonths = 12*(document.getElementById("termInput").value);
 		var yearsMin = 5;
