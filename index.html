@@ -9,6 +9,12 @@
            <h1>Mortgage Calculator</h1>
             <div id ="inputErrorDiv"></div>
             <p id="output"></p>
+			<input type="submit" value="Advanced Mode" onClick="enableAdvancedMode()">
+			<div style= "display:none" id = "advancedStuff">
+			Property Value: <input id = "propVal" type="number" name="property"><br>
+            Percent Down Payment: <input id = "downPay" type="number" name="down"><br>
+			PMI Rate: <input id = "pmiVal" type="number" name="pmi"><br>
+			</div>
             Principal: <input id = "principalInput" type="number" name="principal"><br>
             Interest: <input id = "interestInput" type="number" name="interest"><br>
             Number of Years: <input id = "termInput" type="number" name="numYears"><br>
@@ -60,7 +66,7 @@
 				<option value="Texas">Texas</option>
 				<option value="Utah">Utah</option>
 				<option value="Vermont">Vermont</option>
-				<option value="Virginia">Virginia</option>
+				<option value="Virginia" selected="selected">Virginia</option>
 				<option value="Washington">Washington</option>
 				<option value="West Virginia">West Virginia</option>
 				<option value="Wisconsin">Wisconsin</option>

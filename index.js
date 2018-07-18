@@ -54,12 +54,30 @@ var state={
 	"Wyoming": .61
 };
 
+
+function enableAdvancedMode(){
+	document.getElementById("principalInput").disabled = !document.getElementById("principalInput").disabled;
+	var status = document.getElementById("advancedStuff").style.display;
+	if(status == "block"){
+		document.getElementById("advancedStuff").style.display = "none";
+	}
+	else{
+		document.getElementById("advancedStuff").style.display = "block";
+	}
+}
+
 function myFunction() {
 		var errorDiv = document.getElementById("inputErrorDiv");
 		while (errorDiv.firstChild) {
 			errorDiv.removeChild(errorDiv.firstChild);
 		}
-		var Principal = document.getElementById("principalInput").value;
+		var Principal;
+		if(document.getElementById("principalInput").disabled == false){
+			Principal = document.getElementById("principalInput").value;
+		}
+		else{
+			Principal = document.getElementById("propVal").value * (1 - document.getElementById("downPay").value/100);
+		}
 		var principalMin = 50000;
 		var principalMax = 5000000;
 		if (Principal <  principalMin || Principal > principalMax) {
@@ -101,7 +119,18 @@ function myFunction() {
 		
 		
 		output += "<b>Total payment: $" + ((monthlyPayment * numMonths)).toFixed(2)+"</b><br><br>";
-		output += "<b>Property Taxes per month: $" + ((Principal* state[document.getElementById("hi").value])/(12*100)).toFixed(2)+"</b>";
+		output += "<b>Property Taxes per month: $" + ((Principal* state[document.getElementById("hi").value])/(12*100)).toFixed(2)+"</b><br><br>";
+		
+		if(document.getElementById("advancedStuff").style.display == "block"){
+			var LTVrate = ((document.getElementById("propVal").value * (1 - document.getElementById("downPay").value/100))) / document.getElementById("propVal").value;
+			
+			output += "<b>Loan to Value: " + LTVrate*100 + "%"+"</b><br><br>";
+			
+			if((document.getElementById("downPay").value*document.getElementById("propVal").value) / (document.getElementById("propVal").value) < 20)
+			output += "<b>PMI Cost per month: $" + ((Principal * document.getElementById("pmiVal").value/100)/12).toFixed(2) +"</b>";
+			
+		}
+		
 		node.innerHTML = output;
 		
 		var pBalanceRem = Principal;
@@ -153,6 +182,20 @@ function myFunction() {
 		]
 	  },
 	  options: {
+		scales: {
+		yAxes: [{
+		  scaleLabel: {
+			display: true,
+			labelString: 'Amount USD'
+		  }
+		}],
+		xAxes: [{
+		  scaleLabel: {
+			display: true,
+			labelString: 'Months'
+		  }
+		}]
+	  }     ,
 		title: {
 		  display: true,
 		  text: 'Interest Payment vs. Principal Payment'
