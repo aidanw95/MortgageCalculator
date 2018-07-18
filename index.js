@@ -90,18 +90,18 @@ function myFunction() {
 		
 		//Monthly payment
 		//alert(monthlyPayment);
-		var node = document.getElementById("1");
-		var output = "<b>Monthly payment: " + (Math.round(monthlyPayment*100)/100) + "</b><br><br>";
+		var node = document.getElementById("output");
+		var output = "<b>Monthly payment: $" + (Math.round(monthlyPayment*100)/100) + "</b><br><br>";
 		
 	
 		
 		//Total Interest
 		//alert((monthlyPayment * numMonths) - Principal); 
-		output += "<b>Total interest: " + (((monthlyPayment * numMonths) - Principal)).toFixed(2) + "</b><br><br>";
+		output += "<b>Total interest: $" + (((monthlyPayment * numMonths) - Principal)).toFixed(2) + "</b><br><br>";
 		
 		
-		output += "<b>Total payment: " + ((monthlyPayment * numMonths)).toFixed(2)+"</b><br><br>";
-		output += "<b>Property Taxes per month: " + ((Principal* state[document.getElementById("hi").value])/(12*100)).toFixed(2)+"</b>";
+		output += "<b>Total payment: $" + ((monthlyPayment * numMonths)).toFixed(2)+"</b><br><br>";
+		output += "<b>Property Taxes per month: $" + ((Principal* state[document.getElementById("hi").value])/(12*100)).toFixed(2)+"</b>";
 		node.innerHTML = output;
 		
 		var pBalanceRem = Principal;
