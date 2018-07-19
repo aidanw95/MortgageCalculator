@@ -1,22 +1,23 @@
 <head>
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./main.css">
     <script src= "node_modules/chart.js/dist/Chart.js"></script>
-    <script src="index.js"></script>
+    <script src="main.js"></script>
 </head>
 <body>
    <div id="main">
         <div id="leftColumn">
            <h1>Mortgage Calculator</h1>
             <div id ="inputErrorDiv"></div>
-            <p id="output"></p>
-			<input type="submit" value="Advanced Mode" onClick="enableAdvancedMode()">
+			<input type="submit" id="advanced-button" value="Advanced Mode" onClick="enableAdvancedMode()">
 			<div style= "display:none" id = "advancedStuff">
 			Property Value: <input id = "propVal" type="number" name="property"><br>
             Percent Down Payment: <input id = "downPay" type="number" name="down"><br>
-			PMI Rate: <input id = "pmiVal" type="number" name="pmi"><br>
+			PMI Rate %: <input id = "pmiVal" type="number" name="pmi"><br>
 			</div>
+            <div style= "display:block" id ="placeholdercontainer">
             Principal: <input id = "principalInput" type="number" name="principal"><br>
-            Interest: <input id = "interestInput" type="number" name="interest"><br>
+            </div>
+            Interest Rate %: <input id = "interestInput" type="number" name="interest"><br>
             Number of Years: <input id = "termInput" type="number" name="numYears"><br>
             State:
             <select id="hi">
@@ -75,6 +76,7 @@
             <input type="submit" value="Submit" onClick="myFunction()">
         </div>
         <div id="rightColumn">
+            <p id="output"></p>
             <canvas id="line-chart" width="900px !important" height="575px !important"></canvas>
         </div>
 
